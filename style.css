@@ -1,0 +1,16 @@
+header{
+    background-color: #E3350D;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+footer{
+    background-color: #E3350D;
+    color: white;
+}
+
+#content{
+    height:100vh;
+}

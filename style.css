@@ -25,10 +25,9 @@ footer{
     flex-wrap: wrap;
 }
 
-#smallCard{
+.smallCard{
     height:180px;
     width: 150px;
-    background-color: blue;
     border-radius: 15px;
     border: 1px solid black;
     margin: 10px;

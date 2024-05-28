@@ -1,9 +1,14 @@
+body{
+    margin: 0;
+    background-color: #98280f;
+    display: flex;
+    flex-direction: column;
+}
 header{
     background-color: #E3350D;
     display: flex;
     justify-content: center;
     align-items: center;
-
 }
 
 footer{
@@ -13,4 +18,18 @@ footer{
 
 #content{
     height:100vh;
+}
+
+#smallCard{
+    height:180px;
+    width: 150px;
+    background-color: blue;
+    border-radius: 15px;
+    border: 1px solid black
+}
+
+.Balls{
+    height: 70px;
+    width: 70px;
+    margin: 20px;
 }

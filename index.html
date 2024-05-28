@@ -7,13 +7,18 @@
     <link rel="stylesheet" href="style.css">
     <script src="script.js"></script>
 </head>
-<body>
+<body onload="fetchDataJSON()">
     <header>
+        <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
            <img src="./img/Pokedex-Logo.png" alt="Mein Pokedex">
+           <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
     </header>
-        <div id="content"></div>
-    <footer>
-        Logo erstellt auf: https://fontmeme.com/pokemon-font/
-    </footer>
+        <div class="content">
+            <div id="smallCard"></div>
+        </div>
+    <!-- <footer>
+        <!-- <img class="Balls"src="./img/pokeball-footer.png"> -->
+        <!-- Logo erstellt auf: https://fontmeme.com/pokemon-font/
+    </footer> -->
 </body>
 </html>

@@ -48,8 +48,8 @@ async function showBigCard(i) {
   let PokemonAsJSON = await Pokemon.json();
 
   document.getElementById("blackscreen").classList.remove("d-none");
-  document.getElementById("blackscreen").innerHTML +=
-              `<div id ="bigCard${i}" class="bigCard">
+  document.getElementById("blackscreen").innerHTML =
+              `<div id ="bigCard${i}" class="bigCard" onclick="closeBigCard()">
                <div class="PokeImage">
                 <img class="pokemon-img" src="${PokemonAsJSON["sprites"]["other"]["official-artwork"]["front_default"]}">
                </div>
@@ -60,6 +60,11 @@ async function showBigCard(i) {
      </div>
     </div>`;
   giveColorBigCard(i);
+}
+
+function closeBigCard(){
+    document.getElementById("blackscreen").classList.add("d-none");
+    // document.getElementById('bigCard').innerHTML="";
 }
 
 async function giveColorBigCard(i) {
@@ -80,7 +85,7 @@ async function hearScream(i) {
   let Pokemons = await resopnseAsJSON.results[i]["url"];
   let Pokemon = await fetch(Pokemons);
   let PokemonAsJSON = await Pokemon.json();
-  let Audio_scream = new Audio(PokemonAsJSON["cries"]["legacy"]);
+  let Audio_scream = new Audio(PokemonAsJSON["cries"]["latest"]);
   Audio_scream.play();
 }
 

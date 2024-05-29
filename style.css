@@ -90,8 +90,8 @@ footer{
     display: none;
 }
 .bigCard{
-    height: 300px;
-    width: 200px;
+    height: 75%;
+    width: 75%;
     border-radius: 15px;
     border: 1px solid rgb(255, 255, 255);
     margin: 10px;

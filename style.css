@@ -34,7 +34,12 @@ footer{
     padding: 5px;
     display: flex;
     flex-direction: column;
-    
+}
+
+.smallCard:hover{
+    border: 3px solid whitesmoke;
+    transform: scale(1.5);
+    object-fit: contain;
 
 }
 
@@ -67,3 +72,33 @@ footer{
     justify-content: end;
     align-items: start;
 }
+
+
+
+.blackscreen{
+    background-color: rgba(0, 0, 0, 0.499);
+    z-index: 999;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    top: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0;    
+}
+.d-none{
+    display: none;
+}
+.bigCard{
+    height: 300px;
+    width: 200px;
+    border-radius: 15px;
+    border: 1px solid rgb(255, 255, 255);
+    margin: 10px;
+    padding: 5px;
+    display: flex;
+    flex-direction: column;
+}
+

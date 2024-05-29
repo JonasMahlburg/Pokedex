@@ -73,8 +73,6 @@ footer{
     align-items: start;
 }
 
-
-
 .blackscreen{
     background-color: rgba(0, 0, 0, 0.499);
     z-index: 999;

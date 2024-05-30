@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,23 +8,30 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="types.css">
     <script src="script.js"></script>
+    <script src="radar.js"></script>
+    <script
+    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
+
+
 </head>
 <body onload="fetchDataJSON()">
     <header>
         <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
            <img src="./img/Pokedex-Logo.png" alt="Mein Pokedex">
            <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
-           <input type="text" id="search" onkeydown="filterPokemon()">
+           
+           <input type="text" id="search" onkeydown="filterPokemon()"> <button class="search-button" onclick="searchPokemon">Suchen</button>
     </header>
         <div class="content" id="content">
         </div>
 
         <div id="blackscreen" class="blackscreen d-none">
         </div>
-    <footer>
+    <!-- <footer>
         <img class="footerBall"src="./img/pokeball-footer.png">
        Logo erstellt auf: https://fontmeme.com/pokemon-font/
-    </footer>
+    </footer> -->
 </body>
 </html>
 

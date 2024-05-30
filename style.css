@@ -1,102 +1,137 @@
-body{
-    margin: 0;
-    background-color: #98280f;
-    display: flex;
-    flex-direction: column;
+body {
+  margin: 0;
+  background-color: #98280f;
+  display: flex;
+  flex-direction: column;
 }
-header{
-    background-color: #E3350D;
+header {
+  background-color: #e3350d;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+footer {
+  background-color: #e3350d;
+  color: white;
+  height: 70px;
+}
+
+#content {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.smallCard {
+  height: 180px;
+  width: 150px;
+  border-radius: 15px;
+  border: 1px solid black;
+  margin: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+}
+
+.smallCard:hover {
+  border: 3px solid whitesmoke;
+  transform: scale(1.5);
+  object-fit: contain;
+  cursor: pointer;
+}
+
+.Balls {
+  height: 70px;
+  width: 70px;
+  margin: 20px;
+}
+
+.footerBall {
+  object-fit: cover;
+}
+
+.PokeImage {
+  height: 50%;
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemon-img {
+  height: 100%;
+  width: 100%;
+}
+
+.PokeInfo {
+  flex-direction: column;
+  justify-content: end;
+  align-items: start;
+}
+
+.blackscreen {
+  background-color: rgba(0, 0, 0, 0.499);
+  z-index: 999;
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0;
+}
+.d-none {
+  display: none;
+}
+.bigCard {
+  height: 750px;
+  width: 500px;
+  border-radius: 15px;
+  border: 5px solid rgb(255, 255, 255);
+  margin: 10px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.PokeHead{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-}
-
-footer{
-    background-color: #E3350D;
-    color: white;
-    height: 70px
-}
-
-#content{
-    height:100vh;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-wrap: wrap;
-}
-
-.smallCard{
-    height:180px;
-    width: 150px;
-    border-radius: 15px;
-    border: 1px solid black;
-    margin: 10px;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-}
-
-.smallCard:hover{
-    border: 3px solid whitesmoke;
-    transform: scale(1.5);
-    object-fit: contain;
-
-}
-
-.Balls{
-    height: 70px;
-    width: 70px;
-    margin: 20px;
-}
-
-.footerBall{
-    object-fit: cover;
-    
-}
-
-.PokeImage{
-    height: 50%;
-    width: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.pokemon-img{
-    height: 100%;
     width: 100%;
+    height: 30px;
+    font-size: 25px;
+    color: white;
 }
 
-.PokeInfo{
-    flex-direction: column;
-    justify-content: end;
-    align-items: start;
+.PokeBigInfo{
+    font-size: 25px;
+    color: white;
+    border-radius: 15px;
+    border: 2px solid black;
+    width: 80%;
+    padding: 15px;
+    height: 25%
 }
 
-.blackscreen{
-    background-color: rgba(0, 0, 0, 0.499);
-    z-index: 999;
-    position: fixed;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    top: 0;
+.PokeBigImage {
+    height: 250px;
+    width: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin: 0;    
-}
-.d-none{
-    display: none;
-}
-.bigCard{
-    height: 75%;
-    width: 75%;
-    border-radius: 15px;
-    border: 1px solid rgb(255, 255, 255);
-    margin: 10px;
-    padding: 5px;
-    display: flex;
-    flex-direction: column;
-}
+  }
 
+.search-button {
+  border: 1px solid white;
+  border-radius: 15px;
+  color: white;
+  background-color: red;
+}

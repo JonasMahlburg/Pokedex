@@ -8,16 +8,28 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="types.css">
     <script src="script.js"></script>
-    <script src="radar.js"></script>
+    <!-- <script src="radar.js"></script>
     <script
     src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-    </script>
+    </script> -->
 </head>
 <body onload="fetchDataJSON()">
-    <div w3-include-html="templates/header.html"></div>
+    
+    <header>
+        <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
+           <img src="./img/Pokedex-Logo.png" alt="Mein Pokedex">
+           <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
+           
+           <input type="text" id="search" onkeydown="filterPokemon()" placeholder="search Pkm"> <button class="search-button" onclick="searchPokemon()">search</button>
+
+           <a class="dexLink" href="index.html">Kanto</a><a class="dexLink" href="./Pokedex/johto.html">Johto</a><a class="dexLink" href="hoenn.html">Hoenn</a>
+        
+    </header>
+
+    <!-- <div w3-include-html="templates/header.html"></div> -->
         <div class="content" id="content">
         </div>
-
+<button class="reloadBtn" onclick="fetchDataJSON()">Schnapp sie dir</button>
         <div id="blackscreen" class="blackscreen d-none" >
         </div>
 

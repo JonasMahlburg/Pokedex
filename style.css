@@ -38,6 +38,13 @@ footer {
   flex-wrap: wrap;
 }
 
+.reloadBtn{
+  border: 1px solid white;
+  border-radius: 15px;
+  color: white;
+  background-color: red;
+}
+
 .smallCard {
   height: 180px;
   width: 150px;

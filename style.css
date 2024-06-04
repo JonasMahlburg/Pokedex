@@ -43,6 +43,10 @@ footer {
   border-radius: 15px;
   color: white;
   background-color: red;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 }
 
 .smallCard {
@@ -119,6 +123,19 @@ footer {
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+}
+
+.directionArrow{
+  height: 25px;
+  width: 25px;
+  background-color: inherit;
+  border: 2px solid black;
+  border-radius: 50px;
+}
+
+.Btn4Arrow{
+  background-color: inherit;
+  border: none;
 }
 
 .PokeHead{
@@ -200,4 +217,31 @@ footer {
 .closeBtn{
   background-color: inherit;
   border: none;
+}
+/* ---------------------------Media Querys------------- */
+
+@media (max-width: 1040px){
+  header{
+    flex-direction: column;
+  }
+}
+@media(max-width: 830px){
+  .Balls{
+    display: none;
+  }
+}
+
+@media(max-width: 750px){
+  .logoWritten{
+    width: 350px;
+  }
+}
+
+@media(max-width: 400px){
+  .logoWritten{
+    width: 175px;
+  }
+  .smallCard:hover {
+    transform: scale(1);
+  } 
 }

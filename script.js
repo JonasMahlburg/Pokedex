@@ -1,4 +1,4 @@
-let Pokedex = "https://pokeapi.co/api/v2/pokemon?limit=151&offset=0";
+let Pokedex = "https://pokeapi.co/api/v2/pokemon?limit=15&offset=0";
 let allPokemon = [];
 
 async function fetchDataJSON() {
@@ -59,7 +59,7 @@ for (let i=0; i<allPokemon.length;i++){
     </div>`;
 
     
-  };giveTypeColor();
+  };giveSearchColor(i);
 }
   
 }
@@ -80,12 +80,30 @@ async function giveTypeColor() {
   }
 }
 
+async function giveSearchColor(j) {
+  let response = await fetch(Pokedex);
+  let resopnseAsJSON = await response.json();
+
+  if (blackscreen.classList.contains("d-none")) {
+    for (let i = 0; i < allPokemon.length; i++) {
+      let Pokemons = await resopnseAsJSON.results[j]["url"];
+      let Pokemon = await fetch(Pokemons);
+      let PokemonAsJSON = await Pokemon.json();
+      let type = PokemonAsJSON["types"][0]["type"]["name"];
+
+      document.getElementById(`smallCard${j}`).classList.add(type);
+    }
+  }
+}
+
 function showBigCard(i) {
   // showEditions(i);
   document.getElementById("blackscreen").classList.remove("d-none");
   document.getElementById(
     "blackscreen"
   ).innerHTML = `<div id ="bigCard${i}" class="bigCard">
+  <button class="Btn4Arrow"> <img class="directionArrow" src="./img/arrow-left.png" alt=""></button>
+  <button class="Btn4Arrow"> <img class="directionArrow" src="./img/arrow-right.png" alt=""></button>
   <button class="closeBtn" onclick="closeBigCard()"><img class="closeImage" src="./img/CloseBall.png" alt="close"></button>
               <div class="PokeHead">
               <h2># ${allPokemon[i]["id"]}</h2>
@@ -106,11 +124,7 @@ function showBigCard(i) {
      <div id="Moves" class="tabcontent"></div>
      <div id="Other" class="tabcontent"></div>
      <div id="Entry" class="tabcontent"></div>
-     
-     
-          
-   
-    </div>`;
+  </div>`;
 
   giveColorBigCard(i);
   showStats(i);
@@ -244,3 +258,31 @@ function openCity(evt, cityName) {
 // };
 
 // <canvas id="myChart" style="width:100%;max-width:700px"></canvas> // <-- Für PokeBigInfo wenn alles mit den Stats klapp}
+
+
+   // Funktion zum Laden neuer Inhalte
+   async function loadMorePokemon() {
+    let PokemonAmount = allPokemon.length;
+    if (PokemonAmount < 151) {
+        let content = document.getElementById('content');
+        let remainingPokemonCount = 151 - allPokemon;
+        let fetchLimit = remainingPokemonCount <= 15 ? remainingPokemonCount : 15;
+
+        let response = await fetch("https://pokeapi.co/api/v2/pokemon?offset=${currentPokemon}&limit=${fetchLimit}");
+        let responseAsJson = await response.json();
+        let pokemons = responseAsJson.results;
+
+        for (let j = 0; j < pokemons.length; j++) {
+            let pokemon = pokemons[j];
+            let pokemonData = await fetch(pokemon.url);
+            let pokemonDetails = await pokemonData.json();
+            content.innerHTML += showAllPokemon(PokemonAmount + j + 1);
+        }
+        currentPokemon += fetchLimit;
+        if (allPokemon.lenght >= 151) {
+            let loadMoreButton = document.getElementById('loadMoreButton');
+            loadMoreButton.disabled = true;
+            loadMoreButton.textContent.innerHTML = 'All Pokémon loaded';
+        }
+    }
+}

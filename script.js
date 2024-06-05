@@ -2,21 +2,8 @@ let offset = 0;
 const limit = 15;
 let Pokedex = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
 let allPokemon = [];
+// let searchable =`https://pokeapi.co/api/v2/pokemon?limit=151&offset=0`
 
-
-// async function fetchDataJSON() {
-//   let response = await fetch(Pokedex);
-//   let resopnseAsJSON = await response.json();
-
-//   for (let i = 0; i < resopnseAsJSON["results"].length; i++) {
-   
-//   let Pokemons = resopnseAsJSON.results[i]["url"];
-//   let Pokemon = await fetch(Pokemons);
-//   let PokemonAsJSON = await Pokemon.json();
-//   allPokemon.push(PokemonAsJSON);
-//   showAllPokemon(i);
-//   }
-// }
 
 async function fetchDataJSON() {
   let response = await fetch(Pokedex);
@@ -34,8 +21,8 @@ async function fetchDataJSON() {
 function showAllPokemon(i) {
 
 
-  document.getElementById("content").innerHTML += 
-  `<div id ="smallCard${i}" class="smallCard" onclick="showBigCard(${i}), hearScream(${i})">
+  document.getElementById("content").innerHTML +=
+    `<div id ="smallCard${i}" class="smallCard" onclick="showBigCard(${i}), hearScream(${i})">
                <div class="PokeImage">
                 <img class="pokemon-img" src="${allPokemon[i]["sprites"]["other"]["official-artwork"]["front_default"]}">
                </div>
@@ -47,25 +34,23 @@ function showAllPokemon(i) {
     </div>`;
 
   giveTypeColor(i);
-  }
+}
 
-  async function fetchLoadedJSON() {
-    let response = await fetch(Pokedex);
-    let responseAsJSON = await response.json();
-  
-    for (let i = 0; i < responseAsJSON.results.length; i++) {
-      let pokemonUrl = responseAsJSON.results[i].url;
-      let pokemonResponse = await fetch(pokemonUrl);
-      let pokemonAsJSON = await pokemonResponse.json();
-      allPokemon.push(pokemonAsJSON);
-      showLoadedPokemon(allPokemon.length - 1);
-    }
+async function fetchLoadedJSON() {
+  let response = await fetch(Pokedex);
+  let responseAsJSON = await response.json();
+
+  for (let i = 0; i < responseAsJSON.results.length; i++) {
+    let pokemonUrl = responseAsJSON.results[i].url;
+    let pokemonResponse = await fetch(pokemonUrl);
+    let pokemonAsJSON = await pokemonResponse.json();
+    allPokemon.push(pokemonAsJSON);
+    showLoadedPokemon(allPokemon.length - 1);
   }
-  
-  function showLoadedPokemon(i) {
-  
-  
-    document.getElementById("content").innerHTML += 
+}
+
+function showLoadedPokemon(i) {
+  document.getElementById("content").innerHTML +=
     `<div id ="smallCard${i}" class="smallCard" onclick="showBigCard(${i}), hearScream(${i})">
                  <div class="PokeImage">
                   <img class="pokemon-img" src="${allPokemon[i]["sprites"]["other"]["official-artwork"]["front_default"]}">
@@ -76,22 +61,21 @@ function showAllPokemon(i) {
        ${allPokemon[i]["types"][0]["type"]["name"]}<br>
        </div>
       </div>`;
-  
-    giveLoadedColor(i);
-    }
- 
+
+  giveLoadedColor(i);
+}
+
 
 
 function filterPokemon() {
   let search = document.getElementById("search").value;
   search = search.toLowerCase();
-  console.log(search);
-  document.getElementById("content").innerHTML="";
-for (let i=0; i<allPokemon.length;i++){
-  if (allPokemon[i]["name"].toLowerCase().includes(search)) {
-    document.getElementById(
-      "content"
-    ).innerHTML += `<div id ="smallCard${i}" class="smallCard" onclick="showBigCard(${i}), hearScream(${i})">
+  document.getElementById("content").innerHTML = "";
+  for (let i = 0; i < allPokemon.length; i++) {
+    if (allPokemon[i]["name"].toLowerCase().includes(search)) {
+      document.getElementById(
+        "content"
+      ).innerHTML += `<div id ="smallCard${i}" class="smallCard" onclick="showBigCard(${i}), hearScream(${i})">
                <div class="PokeImage">
                 <img class="pokemon-img" src="${allPokemon[i]["sprites"]["other"]["official-artwork"]["front_default"]}">
                </div>
@@ -102,10 +86,10 @@ for (let i=0; i<allPokemon.length;i++){
      </div>
     </div>`;
 
-    
-  };giveSearchColor(i);
-}
-  
+
+    }; giveSearchColor(i);
+  }
+
 }
 
 async function giveTypeColor() {
@@ -130,9 +114,9 @@ async function giveLoadedColor(k) {
 
   if (blackscreen.classList.contains("d-none")) {
     for (let i = 0; i < allPokemon.length; i++) {
-        let Pokemons = resopnseAsJSON.results[i]["url"];
-        let Pokemon = await fetch(Pokemons);
-        let PokemonAsJSON = await Pokemon.json();
+      let Pokemons = resopnseAsJSON.results[i]["url"];
+      let Pokemon = await fetch(Pokemons);
+      let PokemonAsJSON = await Pokemon.json();
       let type = allPokemon[k]["types"][0]["type"]["name"];
 
       document.getElementById(`smallCard${k}`).classList.add(type);
@@ -141,15 +125,15 @@ async function giveLoadedColor(k) {
 }
 
 async function giveSearchColor(j) {
-  let response = await fetch(Pokedex);
-  let resopnseAsJSON = await response.json();
+  // let response = await fetch(Pokedex);
+  // let resopnseAsJSON = await response.json();
 
   if (blackscreen.classList.contains("d-none")) {
     for (let i = 0; i < allPokemon.length; i++) {
-      let Pokemons = await resopnseAsJSON.results[j]["url"];
-      let Pokemon = await fetch(Pokemons);
-      let PokemonAsJSON = await Pokemon.json();
-      let type = PokemonAsJSON["types"][0]["type"]["name"];
+      // let Pokemons = await resopnseAsJSON.results[j]["url"];
+      // let Pokemon = await fetch(Pokemons);
+      // let PokemonAsJSON = await Pokemon.json();
+      let type = allPokemon[j]["types"][0]["type"]["name"];
 
       document.getElementById(`smallCard${j}`).classList.add(type);
     }
@@ -162,9 +146,11 @@ function showBigCard(i) {
   document.getElementById(
     "blackscreen"
   ).innerHTML = `<div id ="bigCard${i}" class="bigCard">
-  <button class="Btn4Arrow"> <img class="directionArrow" src="./img/arrow-left.png" alt=""></button>
-  <button class="Btn4Arrow"> <img class="directionArrow" src="./img/arrow-right.png" alt=""></button>
+  <div class="menuContainer">
+  <button class="Btn4Arrow"> <img class="directionArrow" src="./img/arrow-left.png" alt="" onclick="nextPokeLeft(${i})"></button>
   <button class="closeBtn" onclick="closeBigCard()"><img class="closeImage" src="./img/CloseBall.png" alt="close"></button>
+  <button class="Btn4Arrow"> <img class="directionArrow" src="./img/arrow-right.png" alt="" onclick="nextPokeRight(${i})"></button>
+  </div>
               <div class="PokeHead">
               <h2># ${allPokemon[i]["id"]}</h2>
               ${allPokemon[i]["name"]} <br>
@@ -178,7 +164,6 @@ function showBigCard(i) {
   <button class="tablinks" onclick="openCity(event, 'Stats')">Stats</button>
   <button class="tablinks" onclick="openCity(event, 'Moves')">Attacks</button>
   <button class="tablinks" onclick="openCity(event, 'Other')">Other Info</button>
-  <button class="tablinks" onclick="openCity(event, 'Entry')">DexEntry</button>
 </div>
      <div id="Stats" class="tabcontent" ></div>  
      <div id="Moves" class="tabcontent"></div>
@@ -190,7 +175,7 @@ function showBigCard(i) {
   showStats(i);
   showMoves(i);
   showOther(i);
-  showEntry(i);
+  
 }
 
 function showStats(i) {
@@ -225,21 +210,12 @@ async function showOther(i) {
   ).innerHTML += `Mostly found in: <br>${locationAsJSON[0]["location_area"]["name"]} <br>`;
 }
 
-async function showEntry(i) {
-  let Entry = await fetch("https://pokeapi.co/api/v2/pokemon-species");
-  let EntryAsJSON = await Entry.json();
-
-  document.getElementById(
-    "Entry"
-  ).innerHTML = `${EntryAsJSON[i]["results"]["flavor_text_entries"]["flavor_text"]}`;
-}
-
 function closeBigCard() {
   document.getElementById("blackscreen").classList.add("d-none");
   // document.getElementById('bigCard').innerHTML="";
 }
 
-async function giveColorBigCard(i) {  
+async function giveColorBigCard(i) {
 
   let type = allPokemon[i]["types"][0]["type"]["name"];
 
@@ -247,7 +223,7 @@ async function giveColorBigCard(i) {
 }
 
 async function hearScream(i) {
-  
+
   let Audio_scream = new Audio(allPokemon[i]["cries"]["latest"]);
   Audio_scream.play();
 }
@@ -268,87 +244,51 @@ function openCity(evt, cityName) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
 
-  // Show the current tab, and add an "active" class to the button that opened the tab
+  
   document.getElementById(cityName).style.display = "block";
   evt.currentTarget.className += " active";
 }
 
-//-----------------------Experimentel--------------------------------------------------//
-// const data = {
-//   labels: [
-//     'Attack',
-//     'Defense',
-//     'Speed',
-//     'Designing',
-//     'Coding',
-//     'Cycling',
-//     'Running'
-//   ],
-//   datasets: [{
-//     label: 'Stats',
-//     data: [65, 59, 90, 81, 56, 55, 40],
-//     fill: true,
-//     backgroundColor: rgba(255, 99, 132, 0.2),
-//     borderColor: rgb(255, 99, 132),
-//     pointBackgroundColor: 'rgb(255, 99, 132)',
-//     pointBorderColor: '#fff',
-//     pointHoverBackgroundColor: '#fff',
-//     pointHoverBorderColor: 'rgb(255, 99, 132)'
-//   }]
-// };
-
-// const config = {
-//   type: 'radar',
-//   data: data,
-//   options: {
-//     elements: {
-//       line: {
-//         borderWidth: 3
-//       }
-//     }
-//   },
-// };
-
-// <canvas id="myChart" style="width:100%;max-width:700px"></canvas> // <-- Für PokeBigInfo wenn alles mit den Stats klapp}
-
-
-   // Funktion zum Laden neuer Inhalte
-//    async function loadMorePokemon() {
-//     let PokemonAmount = allPokemon.length;
-//     if (PokemonAmount < 151) {
-//         let content = document.getElementById('content');
-//         let remainingPokemonCount = 151 - allPokemon;
-//         let fetchLimit = remainingPokemonCount <= 15 ? remainingPokemonCount : 15;
-
-//         let response = await fetch("https://pokeapi.co/api/v2/pokemon?offset=${currentPokemon}&limit=${fetchLimit}");
-//         let responseAsJson = await response.json();
-//         let pokemons = responseAsJson.results;
-
-//         for (let j = PokemonAmount; j < pokemons.length; j++) {
-//             content.innerHTML += fetchDataJSON(PokemonAmount + j + 1);
-//         }
-//         currentPokemon += fetchLimit;
-//         if (allPokemon.lenght >= 151) {
-//             let loadMoreButton = document.getElementById('loadMoreButton');
-//             loadMoreButton.disabled = true;
-//             loadMoreButton.textContent.innerHTML = 'All Pokémon loaded';
-//         }
-//     }
-// }
 async function loadMorePokemon() {
   let remainingPokemonCount = 151 - allPokemon.length;
   let fetchLimit = remainingPokemonCount <= limit ? remainingPokemonCount : limit;
-offset += fetchLimit;
-if (remainingPokemonCount==1){
-  offset = 150
-}
-   Pokedex= `https://pokeapi.co/api/v2/pokemon?limit=${fetchLimit}&offset=${offset}`;
+  offset += fetchLimit;
+  if (remainingPokemonCount == 1) {
+    offset = 150
+  }
+  Pokedex = `https://pokeapi.co/api/v2/pokemon?limit=${fetchLimit}&offset=${offset}`;
   await fetchLoadedJSON(Pokedex);
-  
+
 
   if (allPokemon.length >= 151) {
     let loadMoreButton = document.getElementById('reloadBtn');
     loadMoreButton.disabled = true;
     loadMoreButton.textContent = 'All Pokémon loaded';
   }
+}
+
+function nextPokeLeft(i) {
+  document.getElementById("blackscreen").innerHTML = "";
+ 
+  if (i > 0) {
+    
+    showBigCard(i-1);
+  } else {
+    showBigCard(i);
+  }
+  giveColorBigCard();
+  hearScream(i-1);
+}
+
+function nextPokeRight(i) {
+  document.getElementById("blackscreen").innerHTML = "";
+  
+  if (i >= allPokemon.length -1) {
+    
+    showBigCard(i);
+  } else {
+    showBigCard(i+1);
+  }
+  giveColorBigCard();
+  hearScream(i+1);
 }

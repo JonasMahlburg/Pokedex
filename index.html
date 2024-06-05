@@ -4,14 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mein Pokedex</title>
-    <link rel="icon" type="image/x-icon" href="/img/pokeball-small.png">
+    <link rel="icon" type="image/x-icon" href="./img/pokeball-small.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="types.css">
     <script src="script.js"></script>
-    <!-- <script src="radar.js"></script>
-    <script
-    src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
-    </script> -->
 </head>
 <header>
     <div class="logo">
@@ -19,23 +15,19 @@
          <img class="logoWritten" src="./img/Pokedex-Logo.png" alt="Mein Pokedex">
          <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
      </div>
-         <input type="text" id="search" onkeyup="filterPokemon()" placeholder="search Pkm"> <button class="search-button" onclick="searchPokemon()">search</button>      
+         <input type="text" id="search" onkeyup="filterPokemon()" placeholder="search 3 charackters">
   </header>
 
 <body onload="fetchDataJSON()">
- 
-    <!-- <div w3-include-html="templates/header.html"></div> -->
+  <div id="loader" class="d-none"><div>
+    <img src="./img/poke-loader.png">
+      </div>'`</div>
+
         <div class="content" id="content">
         </div>
-<button id="reloadBtn" class="reloadBtn" onclick="loadMorePokemon()">Schnapp sie dir</button>
+<button id="reloadBtn" class="reloadBtn" onclick="loadMorePokemon()">Schnapp dir mehr</button>
         <div id="blackscreen" class="blackscreen d-none" >
         </div>
-
-       
-    <!-- <footer>
-        <img class="footerBall"src="./img/pokeball-footer.png">
-       Logo erstellt auf: https://fontmeme.com/pokemon-font/
-    </footer> -->
 </body>
 </html>
 

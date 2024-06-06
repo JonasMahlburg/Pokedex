@@ -47,8 +47,8 @@ async function fetchLoadedJSON() {
     let pokemonResponse = await fetch(pokemonUrl);
     let pokemonAsJSON = await pokemonResponse.json();
     allPokemon.push(pokemonAsJSON);
-    showLoadedPokemon(allPokemon.length - 1);
-    document.getElementById("loader").classList.add("d-none");
+   showLoadedPokemon(allPokemon.length - 1);
+   document.getElementById("loader").classList.add("d-none");
   }
 }
 
@@ -141,13 +141,22 @@ async function giveSearchColor(j) {
 function showBigCard(i) {
   // showEditions(i);
   document.getElementById("blackscreen").classList.remove("d-none");
-  document.getElementById(
+  renderBigCard(i)
+  giveColorBigCard(i);
+  showStats(i);
+  showMoves(i);
+  showOther(i);
+  
+}
+
+function renderBigCard(i){
+  let BigCard =  document.getElementById(
     "blackscreen"
   ).innerHTML = `<div id ="bigCard${i}" class="bigCard">
   <div class="menuContainer">
-  <button class="Btn4Arrow"> <img class="directionArrow" src="./img/arrow-left.png" alt="" onclick="nextPokeLeft(${i})"></button>
+  <button id="arrowLeft" class="Btn4Arrow"> <img class="directionArrow" src="./img/arrow-left.png" alt="" onclick="nextPokeLeft(${i})"></button>
   <button class="closeBtn" onclick="closeBigCard()"><img class="closeImage" src="./img/CloseBall.png" alt="close"></button>
-  <button class="Btn4Arrow"> <img class="directionArrow" src="./img/arrow-right.png" alt="" onclick="nextPokeRight(${i})"></button>
+  <button id="arrowRight" class="Btn4Arrow"> <img class="directionArrow" src="./img/arrow-right.png" alt="" onclick="nextPokeRight(${i})"></button>
   </div>
               <div class="PokeHead">
               <h2># ${allPokemon[i]["id"]}</h2>
@@ -159,21 +168,16 @@ function showBigCard(i) {
                </div>
                <div class="PokeBigInfo">
                <div class="tab">
-  <button class="tablinks" onclick="openCity(event, 'Stats')">Stats</button>
-  <button class="tablinks" onclick="openCity(event, 'Moves')">Attacks</button>
-  <button class="tablinks" onclick="openCity(event, 'Other')">Other Info</button>
+  <button class="tablinks" onclick="openTab(event, 'Stats')">Stats</button>
+  <button class="tablinks" onclick="openTab(event, 'Moves')">Attacks</button>
+  <button class="tablinks" onclick="openTab(event, 'Other')">Other Info</button>
 </div>
      <div id="Stats" class="tabcontent" style="display: block" ></div>  
      <div id="Moves" class="tabcontent"></div>
      <div id="Other" class="tabcontent"></div>
      <div id="Entry" class="tabcontent"></div>
   </div>`;
-
-  giveColorBigCard(i);
-  showStats(i);
-  showMoves(i);
-  showOther(i);
-  
+  return BigCard;
 }
 
 function showStats(i) {
@@ -203,9 +207,6 @@ async function showOther(i) {
       "Other"
     ).innerHTML += `${allPokemon[i]["abilities"][a]["ability"]["name"]} <br>`;
   }
-  document.getElementById(
-    "Other"
-  ).innerHTML += `Mostly found in: <br>${locationAsJSON[0]["location_area"]["name"]} <br>`;
 }
 
 function closeBigCard() {
@@ -221,9 +222,10 @@ async function giveColorBigCard(i) {
 async function hearScream(i) {
   let Audio_scream = new Audio(allPokemon[i]["cries"]["latest"]);
   Audio_scream.play();
+  Audio_scream.volume=0.1;
 }
 
-function openCity(evt, cityName) {
+function openTab(evt, cityName) {
   var i, tabcontent, tablinks;
 
   tabcontent = document.getElementsByClassName("tabcontent");
@@ -261,20 +263,25 @@ function nextPokeLeft(i) {
   if (i > 0) {
     showBigCard(i-1);
   } else {
+    let i = allPokemon.length -1;
     showBigCard(i);
+    hearScream(i);
   }
-  giveColorBigCard();
-  hearScream(i-1);
+  
 }
 
 function nextPokeRight(i) {
   document.getElementById("blackscreen").innerHTML = "";
   
   if (i >= allPokemon.length -1) {
+    let i = 0;
     showBigCard(i);
+    hearScream(i)
+    
+    
   } else {
     showBigCard(i+1);
+    hearScream(i+1);
   }
-  giveColorBigCard();
-  hearScream(i+1);
+  
 }

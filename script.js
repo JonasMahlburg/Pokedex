@@ -119,9 +119,6 @@ async function giveLoadedColor(k) {
 
   if (blackscreen.classList.contains("d-none")) {
     for (let i = 0; i < allPokemon.length; i++) {
-      let Pokemons = resopnseAsJSON.results[i]["url"];
-      let Pokemon = await fetch(Pokemons);
-      let PokemonAsJSON = await Pokemon.json();
       let type = allPokemon[k]["types"][0]["type"]["name"];
 
       document.getElementById(`smallCard${k}`).classList.add(type);
@@ -225,8 +222,8 @@ async function hearScream(i) {
   Audio_scream.volume=0.1;
 }
 
-function openTab(evt, cityName) {
-  var i, tabcontent, tablinks;
+function openTab(evt, TabName) {
+  let i, tabcontent, tablinks;
 
   tabcontent = document.getElementsByClassName("tabcontent");
   for (i = 0; i < tabcontent.length; i++) {
@@ -236,7 +233,7 @@ function openTab(evt, cityName) {
   for (i = 0; i < tablinks.length; i++) {
     tablinks[i].className = tablinks[i].className.replace(" active", "");
   }
-  document.getElementById(cityName).style.display = "block";
+  document.getElementById(TabName).style.display = "block";
   evt.currentTarget.className += " active";
 }
 

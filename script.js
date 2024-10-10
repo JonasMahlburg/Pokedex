@@ -180,7 +180,9 @@ function renderBigCard(i){
   <button class="tablinks" onclick="openTab(event, 'Moves')">Attacks</button>
   <button class="tablinks" onclick="openTab(event, 'Other')">Other Info</button>
 </div>
-     <div id="Stats" class="tabcontent" style="display: block" ></div>  
+     <div id="Stats" class="tabcontent" style="display: block" ><div id="Stats" class="tabcontent" style="display: block;">
+  <canvas id="statsChart" width= 250px height= 250px></canvas>
+</div></div>  
      <div id="Moves" class="tabcontent"></div>
      <div id="Other" class="tabcontent"></div>
      <div id="Entry" class="tabcontent"></div>
@@ -189,11 +191,53 @@ function renderBigCard(i){
 }
 
 function showStats(i) {
-  for (let s = 0; s < allPokemon[i]["stats"].length; s++) {
-    document.getElementById(
-      "Stats"
-    ).innerHTML += `${allPokemon[i]["stats"][s]["stat"]["name"]}:${allPokemon[i]["stats"][s]["base_stat"]}<br>`;
-  }
+  // Hole die Basiswerte der Pokémon-Statuswerte
+  let stats = allPokemon[i]["stats"].map((stat) => stat["base_stat"]);
+  
+  // Labels für die Statuswerte
+  let labels = allPokemon[i]["stats"].map((stat) => stat["stat"]["name"]);
+
+  // Erstelle oder leere die Stats-Tab
+  document.getElementById("Stats").innerHTML = '<canvas id="statsChart"></canvas>';
+  
+  // Hole das Canvas-Element
+  let ctx = document.getElementById("statsChart").getContext("2d");
+
+  // Erstelle das Radar Chart
+  new Chart(ctx, {
+    type: 'radar',
+    data: {
+      labels: labels,  // Die Namen der Statuswerte (hp, speed, etc.)
+      datasets: [{
+        label: `${allPokemon[i]["name"]}'s Stats`,  // Name des Pokémon
+        data: stats,  // Die Basiswerte des Pokémon
+        backgroundColor: 'rgba(54, 162, 235, 0.2)',  // Hintergrundfarbe des Charts
+        borderColor: 'rgba(54, 162, 235, 1)',  // Linienfarbe des Charts
+        borderWidth: 2
+      }]
+    },
+    options: {
+      responsive: false,  // Deaktiviere automatische Größenanpassung
+      maintainAspectRatio: false,  // Seitenverhältnis nicht beibehalten
+      scales: {
+        r: {  // Konfiguration der Radarskalierung
+          suggestedMin: 0,
+          suggestedMax: 150,
+          // Anpassung der Schriftfarbe der Labels und Ticks
+          pointLabels: {
+            color: '#000',  // Farbe der Statuswert-Labels (z.B. "hp", "speed")
+            font: {
+              size: 14  // Schriftgröße anpassen (optional)
+            }
+          },
+          ticks: {
+            color: '#333',  // Farbe der Ticks (Zahlen auf den Achsen)
+            backdropColor: 'rgba(0, 0, 0, 0)'  // Hintergrund der Ticks (transparent machen)
+          }
+        }
+      }
+    }
+  });
 }
 
 function showMoves(i) {

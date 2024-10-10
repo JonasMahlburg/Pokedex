@@ -5,22 +5,24 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mein Pokedex</title>
-    <link rel="icon" type="image/x-icon" href="/img/pokeball-small.png">
+    <link rel="icon" type="image/x-icon" href="./img/pokeball-small.png">
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="types.css">
     <script src="script.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
   </head>
-  <header>
-    <div class="logo">
-      <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
-      <img class="logoWritten" src="./img/Pokedex-Logo.png" alt="Mein Pokedex">
-      <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
-    </div>
-    <input type="text" id="search" onkeyup="filterPokemon()" placeholder="search 3 charackters">
-  </header>
+
 
   <body onload="fetchDataJSON()">
-    <div id="loader" class="d-none">
+    <header>
+      <div class="logo">
+        <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
+        <img class="logoWritten" src="./img/Pokedex-Logo.png" alt="Mein Pokedex">
+        <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
+      </div>
+      <input type="text" id="search" class="search-field" onkeyup="filterPokemon()" placeholder="search 3 charackters">
+    </header>
+    <div id="loader" class="d-none loader">
       <div>
         <img src="./img/poke-loader.png">
       </div>
@@ -28,7 +30,7 @@
 
     <div class="content" id="content">
     </div>
-    <button id="reloadBtn" class="reloadBtn" onclick="loadMorePokemon()">Schnapp dir mehr</button>
+    <button id="reloadBtn" class="reloadBtn" onclick="loadMorePokemon()">catch more</button>
     <div id="blackscreen" class="blackscreen d-none">
     </div>
   </body>

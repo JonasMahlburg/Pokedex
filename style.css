@@ -1,9 +1,6 @@
 body {
   margin: 0;
-  background-color: #98280f;
-  display: flex;
-  justify-content: center;
-  
+  background-color: #98280f;  
 }
 header {
   position: sticky;
@@ -14,7 +11,9 @@ header {
   display: flex;
   justify-content: center;
   align-items: center;
-  
+  width: 100%;
+  z-index: 99;
+  box-shadow: 5px 5px 18px #000000;
 }
 
 .dexLink{
@@ -37,7 +36,6 @@ footer {
 }
 
 #content {
-  
   display: flex;
   justify-content: center;
   align-items: center;
@@ -54,6 +52,16 @@ footer {
   left: 0;
   right: 0;
   cursor: pointer;
+}
+
+.loader{
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
 }
 
 .smallCard {
@@ -207,14 +215,17 @@ footer {
 
 .tabcontent {
   display: none;
-  padding: 6px 12px;
+  padding: 0px 12px;
 }
 
-.search-button {
-  border: 1px solid white;
+#statsChart{
+  width: 250px;
+  height: 250px;
+}
+
+.search-field {
+  border: 1px solid yellow;
   border-radius: 15px;
-  color: white;
-  background-color: red;
 }
 
 .closeImage{
@@ -222,6 +233,13 @@ footer {
   height: 30px;
   color: inherit;
   cursor: pointer;
+  transition: height 1.5s, width 1.5s,  transform 2s;
+}
+
+.closeImage:hover{
+ transform: rotate(90deg);
+ width: 35px;
+ height: 35px;
 }
 
 .closeBtn{

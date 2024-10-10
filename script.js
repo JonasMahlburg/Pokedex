@@ -6,7 +6,7 @@ let allPokemon = [];
 
 async function fetchDataJSON() {
   let response = await fetch(Pokedex);
-  let responseAsJSON = await response.json();
+  let responseAsJSON = await response.json();  
 showLoader();
   for (let i = 0; i < responseAsJSON.results.length; i++) {
     let pokemonUrl = responseAsJSON.results[i].url;
@@ -74,7 +74,20 @@ function filterPokemon() {
   let search = document.getElementById("search").value;
   if(search.length>= 3){
       search = search.toLowerCase();
-  document.getElementById("content").innerHTML = "";
+  showFilteredPokemon(search)
+}else{
+  if(search.length<=3){
+    document.getElementById('content').innerHTML = '';
+    for (let a = 0; a < allPokemon.length; a++) {
+      showLoadedPokemon(a);
+      
+    }
+  }
+}
+}
+
+function showFilteredPokemon(search){
+  let searchResult =document.getElementById("content").innerHTML = "";
   for (let i = 0; i < allPokemon.length; i++) {
     if (allPokemon[i]["name"].toLowerCase().includes(search)) {
       document.getElementById(
@@ -93,7 +106,7 @@ function filterPokemon() {
     giveSearchColor(i);
     }; 
   }
-}
+  return(searchResult);
 }
 
 async function giveTypeColor() {
@@ -115,8 +128,6 @@ async function giveTypeColor() {
 async function giveLoadedColor(k) {
   let response = await fetch(Pokedex);
   let resopnseAsJSON = await response.json();
-
-
   if (blackscreen.classList.contains("d-none")) {
     for (let i = 0; i < allPokemon.length; i++) {
       let type = allPokemon[k]["types"][0]["type"]["name"];

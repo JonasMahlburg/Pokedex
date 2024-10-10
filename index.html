@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <htmlv��Xg="de">
-<head>
+
+  <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mein Pokedex</title>
@@ -8,26 +9,29 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="types.css">
     <script src="script.js"></script>
-</head>
-<header>
+  </head>
+  <header>
     <div class="logo">
-         <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
-         <img class="logoWritten" src="./img/Pokedex-Logo.png" alt="Mein Pokedex">
-         <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
-     </div>
-         <input type="text" id="search" onkeyup="filterPokemon()" placeholder="search 3 charackters">
+      <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
+      <img class="logoWritten" src="./img/Pokedex-Logo.png" alt="Mein Pokedex">
+      <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
+    </div>
+    <input type="text" id="search" onkeyup="filterPokemon()" placeholder="search 3 charackters">
   </header>
 
-<body onload="fetchDataJSON()">
-  <div id="loader" class="d-none"><div>
-    <img src="./img/poke-loader.png">
-      </div>'`</div>
+  <body onload="fetchDataJSON()">
+    <div id="loader" class="d-none">
+      <div>
+        <img src="./img/poke-loader.png">
+      </div>
+    </div>
 
-        <div class="content" id="content">
-        </div>
-<button id="reloadBtn" class="reloadBtn" onclick="loadMorePokemon()">Schnapp dir mehr</button>
-        <div id="blackscreen" class="blackscreen d-none" >
-        </div>
-</body>
-</html>
+    <div class="content" id="content">
+    </div>
+    <button id="reloadBtn" class="reloadBtn" onclick="loadMorePokemon()">Schnapp dir mehr</button>
+    <div id="blackscreen" class="blackscreen d-none">
+    </div>
+  </body>
+
+  </html>
 

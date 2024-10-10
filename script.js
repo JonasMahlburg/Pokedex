@@ -293,19 +293,36 @@ function openTab(evt, TabName) {
 }
 
 async function loadMorePokemon() {
+  let reloadBtn = document.getElementById('reloadBtn');
+  
+  // Button für 3 Sekunden deaktivieren
+  reloadBtn.disabled = true;
+
+  // Timer, der den Button nach 3 Sekunden wieder aktiviert
+  setTimeout(() => {
+    reloadBtn.disabled = false;
+  }, 2000);
+
+  // Berechne, wie viele Pokémon noch zu laden sind
   let remainingPokemonCount = 151 - allPokemon.length;
   let fetchLimit = remainingPokemonCount <= limit ? remainingPokemonCount : limit;
   offset += fetchLimit;
+
+  // Wenn nur noch 1 Pokémon übrig ist, setze den Offset auf 150
   if (remainingPokemonCount == 1) {
-    offset = 150
+    offset = 150;
   }
+
+  // URL für den nächsten API-Aufruf erstellen
   Pokedex = `https://pokeapi.co/api/v2/pokemon?limit=${fetchLimit}&offset=${offset}`;
+  
+  // Daten laden
   await fetchLoadedJSON(Pokedex);
 
+  // Prüfen, ob alle Pokémon geladen wurden
   if (allPokemon.length >= 151) {
-    let loadMoreButton = document.getElementById('reloadBtn');
-    loadMoreButton.disabled = true;
-    alert('all Pokemon are loaded')
+    reloadBtn.disabled = true;  // Button dauerhaft deaktivieren
+    alert('All Pokémon are loaded');
   }
 }
 
@@ -314,6 +331,7 @@ function nextPokeLeft(i) {
  
   if (i > 0) {
     showBigCard(i-1);
+    hearScream(i-1);
   } else {
     let i = allPokemon.length -1;
     showBigCard(i);

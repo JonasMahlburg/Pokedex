@@ -2,6 +2,7 @@ let offset = 0;
 const limit = 15;
 let Pokedex = `https://pokeapi.co/api/v2/pokemon?limit=${limit}&offset=${offset}`;
 let allPokemon = [];
+let soundOn = true;
 
 
 async function fetchDataJSON() {
@@ -273,8 +274,11 @@ async function giveColorBigCard(i) {
 
 async function hearScream(i) {
   let Audio_scream = new Audio(allPokemon[i]["cries"]["latest"]);
-  Audio_scream.play();
-  Audio_scream.volume=0.1;
+  if (soundOn) {
+    Audio_scream.play();
+    Audio_scream.volume=0.1;
+  }
+
 }
 
 function openTab(evt, TabName) {
@@ -354,4 +358,15 @@ function nextPokeRight(i) {
     hearScream(i+1);
   }
   
+}
+
+function toggleSound(){
+  const soundBtn = document.getElementById('soundBtn');
+  if (soundOn) {
+    soundOn = false;
+    soundBtn.style.backgroundImage = 'url("./img/sound_off.png")';
+  } else {
+    soundOn = true;
+    soundBtn.style.backgroundImage = 'url("./img/sound_on.png")'; // Optional
+  }
 }

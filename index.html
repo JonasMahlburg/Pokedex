@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<htmlv��Xg="de">
+<html lang="de">
 
   <head>
     <meta charset="UTF-8">
@@ -17,12 +17,17 @@
 
   <body onload="fetchDataJSON()">
     <header>
+   
       <div class="logo">
         <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
-        <img class="logoWritten" src="./img/Pokedex-Logo.png" alt="Mein Pokedex">
+        <img class="logoWritten" src="./img/Logo.png" alt="My Pokedex">
         <img class="Balls" src="./img/pokeball-small.png" alt="kleiner Pokeball">
       </div>
-      <input type="text" id="search" class="search-field" onkeyup="filterPokemon()" placeholder="search 3 charackters">
+      <div class="menuBar">
+        <input type="text" id="search" class="search-field" onkeyup="filterPokemon()" placeholder="search 3 charackters">
+        <button id="soundBtn" onclick="toggleSound()"></button>
+      </div>
+
     </header>
     <div id="loader" class="d-none loader">
       <div>

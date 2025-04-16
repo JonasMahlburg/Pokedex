@@ -16,6 +16,13 @@ header {
   box-shadow: 5px 5px 18px #000000;
 }
 
+.menuBar{
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
 .dexLink{
   text-decoration: none;
   color: white;
@@ -42,23 +49,38 @@ footer {
   flex-wrap: wrap;
 }
 
-.reloadBtn{
+/* .reloadBtn{
   border: 1px solid white;
   border-radius: 15px;
   color: white;
   background-color: red;
   position: fixed;
-  bottom: 0;
+  bottom: 15px;
   left: 0;
   right: 0;
   cursor: pointer;
   transition: all 0.3s ease;
+} */
+
+.reloadBtn {
+  border: 1px solid white;
+  border-radius: 15px;
+  color: white;
+  background-color: red;
+  position: fixed;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 200px; /* oder eine andere feste Breite */
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-align: center;
 }
 
 .reloadBtn:hover{
   border: 2px solid rgb(251, 202, 60);
   color: rgb(251, 202, 60);
-  bottom: 10px;
+
 }
 
 .loader{
@@ -257,15 +279,36 @@ footer {
   background-color: inherit;
   border: none;
 }
+
+#soundBtn {
+  height: 45px;
+  width: 45px;
+  border-radius: 50px;
+  border: solid, 0.1px, red;
+  background-image: url("./img/sound_on.png");
+  background-color: inherit;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  cursor: pointer;
+  box-shadow: 5px 5px 18px #000000;
+}
+#soundBtn:hover{
+  border-color: rgb(251, 202, 60);
+}
+
 /* ---------------------------Media Querys------------- */
 
 @media (max-width: 1040px){
   header{
     flex-direction: column;
   }
+  .search-field {
+  margin-bottom: 10px;
 }
-@media(max-width: 830px){
-  .Balls{
+}
+@media(max-width: 830px) {
+  .Balls {
     display: none;
   }
 }
